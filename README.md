@@ -1,6 +1,9 @@
 # A.Eye
 한국 데이터 산업진흥원에서 주최한 데이터 청년 캠퍼스
+
 고려대학교 소속 13조입니다.
+
+This is Korea University Team 13 of Data Campus hosted by Korea Data Agency.
 
 ## Demo in colab
 
