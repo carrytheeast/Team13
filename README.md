@@ -50,7 +50,7 @@ On video:
 
 No Detect Face and Eyes:
 
-Draw guide line
+Draw guide lines.
 
 ![사람이 없을 때](https://user-images.githubusercontent.com/98952505/186854480-c0510379-d948-4d12-9ff8-0ba8733d920b.png)
 
@@ -59,7 +59,11 @@ Draw guide line
 
 On Working:
 
-User can get theirs pure study time and total time.
+User can check the belows.
+
+- pure study time
+
+- total time
 
 ![정상 작동중](https://user-images.githubusercontent.com/98952505/186854500-1ae1a163-fc6e-422e-86dc-ae9670082b6e.png)
 
@@ -76,9 +80,10 @@ On Working:
 Developer can check the belows.
 
 - Gaze Directions
-- Gaze Line
-- Objects
-- Object Bbox
+- Gaze Lines
+- Selected Area
+- Objects Labels
+- Object Bboxes
 - Time
 
 On Working:
