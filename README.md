@@ -33,27 +33,6 @@ This is Korea University Team 13 of Data Campus hosted by Korea Data Agency.
     ├── vd7             # images and annotations
     └── vd9             # images and annotations
 ```
-## Our project
-
-### detec.py
-
-사람의 얼굴을 시선을 추측하고 object detection으로 책상 주변 사물을 찾아 공부하고 있는지 판단한다.
-
-### gaze_estimation.py
-
-face mesh를 통해서 시선을 추측한다.
-
-### object_selection.py
-
-IOU를 이용해서 지금 어떤 물체를 보고 있는지 선택하고 그 물체를 바탕으로 순공부 시간을 측정한다.
-
-### utils2.py
-
-다른 파일에서 사용되는 함수들을 담고 있다.
-
-### plot.py
-
-결과물로 그래프를 `fig1.png`로 저장한다.
 
 ## Demo in colab
 
