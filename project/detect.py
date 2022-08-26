@@ -19,6 +19,11 @@ from utils2 import gridLine, gazePointLine, gazeText, warningText
 from plot import printPlot
 
 def detect():    
+
+    #################################################
+    # yolov7 by WongKinYiu with modifications START #
+    #################################################
+
     source, weights, view_img, imgsz, trace, save_path, mode = args.source, args.weights, args.view_img, args.img_size, not args.no_trace, args.save_path, args.mode
     webcam = source.isnumeric() or source.endswith('.txt') or source.lower().startswith(('rtsp://', 'rtmp://', 'http://', 'https://'))
     fps_cnt_list, total_fps_cnt_list, fps_obj_list = [], [], []
@@ -49,15 +54,24 @@ def detect():
     else:
         dataset = LoadImages(source, img_size=imgsz, stride=stride)
 
-    # Get names and colors
-    names = ['book','pen(pencil)','laptop','tabletcomputer','keyboard','cellphone','mouse','pencilcase','wallet','desklamp','airpods','stopwatch']
-    colors = [[np.random.randint(0, 255) for _ in range(3)] for _ in names]
-
     # Run inference
     if device.type != 'cpu':
         model(torch.zeros(1, 3, imgsz, imgsz).to(device).type_as(next(model.parameters())))  # run once
     old_img_w = old_img_h = imgsz
     old_img_b = 1
+
+    ###############################################
+    # yolov7 by WongKinYiu with modifications END #
+    ###############################################
+
+    ###################################################
+    # our code START : Gaze Estimation with face mesh #
+    ###################################################
+
+    # Get names and colors
+    # our model have 12 classes
+    names = ['book','pen(pencil)','laptop','tabletcomputer','keyboard','cellphone','mouse','pencilcase','wallet','desklamp','airpods','stopwatch']
+    colors = [[np.random.randint(0, 255) for _ in range(3)] for _ in names]
 
     # Gaze estimation model with mediapipe
     gaze_model = GazeEstimation(args)
@@ -113,7 +127,15 @@ def detect():
 
                     # EAR ratio
                     ear, gaze_line_y, box1_y1, box1_y2 = gaze_model.earRatio(face_landmarks, eye_list, y)                
-                            
+
+    #################################################
+    # our code END : Gaze Estimation with face mesh #
+    #################################################
+
+    #################################################
+    # yolov7 by WongKinYiu with modifications START #
+    #################################################
+
                 img = torch.from_numpy(img).to(device)
                 img = img.half() if half else img.float()  # uint8 to fp16/32
                 img /= 255.0  # 0 - 255 to 0.0 - 1.0
@@ -133,6 +155,14 @@ def detect():
 
                 # Apply NMS
                 pred = non_max_suppression(pred, args.conf_thres, args.iou_thres, classes=args.classes, agnostic=args.agnostic_nms)
+
+    ###############################################
+    # yolov7 by WongKinYiu with modifications END #
+    ###############################################
+
+    #############################################################
+    # our code START : Object Selection and Display information #
+    #############################################################
 
                 if mode:
                     # Grid line
@@ -194,6 +224,10 @@ def detect():
     print('save as', save_path)
     out.release()
     return fps_cnt_list, total_fps_cnt_list, fps_obj_list
+    
+    ###########################################################
+    # our code END : Object Selection and Display information #
+    ###########################################################   
 
 def parse_args():
     parser = argparse.ArgumentParser()
