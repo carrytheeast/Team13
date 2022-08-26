@@ -28,7 +28,7 @@ On video:
 
 ```python
 # detect.py
-!python detect.py --weights [best.pt](http://best.pt/) --source your_video.mp4 --save_path your_path--mode 0
+!python detect.py --weights best.pt --source your_video.mp4 --save_path your_path--mode 0
 ```
 ### Detecting
 
