@@ -7,7 +7,7 @@ This is Korea University Team 13 of Data Campus hosted by Korea Data Agency.
 
 ## Demo in colab
 
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?hl=ko&url= https://colab.research.google.com/drive/1Zx0zZMmj5Zyuf6RDV4EzPnjmeupha7fS?hl=ko_bg=%234AC2E1&title_bg=%23FFAD26&icon=opencollective.svg&icon_color=%23E7E7E7&title=Colab&edge_flat=false)](https://hits.seeyoufarm.com)
+<a href="https://colab.research.google.com/drive/1Zx0zZMmj5Zyuf6RDV4EzPnjmeupha7fS?hl=ko#scrollTo=E4f3RiVJvFew"><img src="https://img.shields.io/badge/Colab-yellowgreen?style=flat-square&logo=colab&logoColor=white&link=https://colab.research.google.com/drive/1Zx0zZMmj5Zyuf6RDV4EzPnjmeupha7fS?hl=ko#scrollTo=E4f3RiVJvFew"/></a> 
 
 ```python
 # You can clone github
