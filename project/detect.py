@@ -173,7 +173,8 @@ def detect():
                         object_select_model.top_iou_obj = 'sleep'
                     fps_obj_list.append(object_select_model.top_iou_obj)
                     total_fps_cnt_list.append(object_select_model.total_fps_cnt) 
-
+                    if webcam:
+                        cv2.imshow('A EYE',im0s)
                     out.write(im0s)
 
                     # Print statement
@@ -186,7 +187,8 @@ def detect():
                 fps_cnt_list.append(object_select_model.fps_cnt)
                 fps_obj_list.append('None')
                 total_fps_cnt_list.append(object_select_model.total_fps_cnt) 
-
+                if webcam:
+                    cv2.imshow('A EYE',im0s)
                 out.write(im0s)
 
     print('save as', save_path)
