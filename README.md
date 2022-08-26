@@ -2,13 +2,6 @@
 한국 데이터 산업진흥원에서 주최한 데이터 청년 캠퍼스
 고려대학교 소속 13조입니다.
 
-### Result Visualtization
-
-After detect, Save video.mp4 and fig.jpg
-
-![fig1 (4)](https://user-images.githubusercontent.com/98952505/186854344-e695787e-595f-4ecf-b2a5-726a5fc62e18.png)
-
-
 ### Demo in colab
 
 ```python
@@ -85,6 +78,13 @@ On Working:
 When EAR is CLOSE, We show the sentence at middle. (2)
 
 ![졸고있음](https://user-images.githubusercontent.com/98952505/186854614-11744ae4-cac0-40b6-8928-69e56623c841.png)
+
+
+### Result Visualtization
+
+After detect, Save video.mp4 and fig.jpg
+
+![fig1 (4)](https://user-images.githubusercontent.com/98952505/186854344-e695787e-595f-4ecf-b2a5-726a5fc62e18.png)
 
 ### detec.py
 
