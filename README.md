@@ -18,7 +18,7 @@
 !pip install -r requirements.txt
 ```
 
-### Inference
+## Inference
 
 On video:
 
@@ -27,7 +27,7 @@ On video:
 !python detect.py --weights best.pt --source your_video.mp4 --save_path your_path--mode 0
 ```
 
-### Detecting
+## Woking
 
 No Detect Face and Eyes:
 
@@ -80,13 +80,13 @@ When EAR is CLOSE, We show the sentence at middle. (2)
 ![졸고있음](https://user-images.githubusercontent.com/98952505/186854614-11744ae4-cac0-40b6-8928-69e56623c841.png)
 
 
-### Result Visualtization
+## Result Visualtization
 
 After detect, Save video.mp4 and fig.jpg
 
 ![fig1 (4)](https://user-images.githubusercontent.com/98952505/186854344-e695787e-595f-4ecf-b2a5-726a5fc62e18.png)
 
-### detec.py
+## detec.py
 
 `detec.py` supports the following options:
 
@@ -99,7 +99,7 @@ usage: detect3.py [-h] [--weights WEIGHTS [WEIGHTS ...]] [--source SOURCE]
                   [--mode MODE]
 ```
 
-### References
+## References
 
 - [https://github.com/WongKinYiu/yolov7](https://github.com/WongKinYiu/yolov7)
 - [https://github.com/google/mediapipe](https://github.com/google/mediapipe)
