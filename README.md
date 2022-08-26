@@ -31,7 +31,7 @@ On video:
 
 ```python
 # detect.py
-!python detect.py --weights best.pt --source your_video.mp4 --save_path your/path/name.mp4 --mode 0
+!python detect.py --weights best.pt --source [your_video.mp4] --save_path [your/path/name.mp4] --mode 0
 ```
 
 ## Woking
