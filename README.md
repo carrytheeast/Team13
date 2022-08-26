@@ -41,7 +41,8 @@ from utils import * 로 import하여 사용하기 때문에 크게 신경 쓰지
 ```
 ### Result
 
-![fig1 (4).png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3b67474a-dbf4-4949-af20-ce3bc806f101/fig1_(4).png)
+![fig1 (4)](https://user-images.githubusercontent.com/98952505/186835435-860c5de3-6dd9-49ba-9294-3126207ef0f3.png)
+
 
 ### Demo in colab
 
