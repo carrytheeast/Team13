@@ -1,18 +1,6 @@
 # A.Eye
 한국 데이터 산업진흥원에서 주최한 데이터 청년 캠퍼스
 고려대학교 소속 13조입니다.
-### detec.py
-
-`detec.py` supports the following options:
-
-```python
-usage: detect3.py [-h] [--weights WEIGHTS [WEIGHTS ...]] [--source SOURCE]
-                  [--img-size IMG_SIZE] [--conf-thres CONF_THRES]
-                  [--iou-thres IOU_THRES] [--device DEVICE] [--view-img]
-                  [--classes CLASSES [CLASSES ...]] [--agnostic-nms]
-                  [--augment] [--update] [--no-trace] [--save-path SAVE_PATH]
-                  [--mode MODE]
-```
 
 ### Result Visualtization
 
@@ -98,6 +86,18 @@ When EAR is CLOSE, We show the sentence at middle. (2)
 
 ![졸고있음](https://user-images.githubusercontent.com/98952505/186854614-11744ae4-cac0-40b6-8928-69e56623c841.png)
 
+### detec.py
+
+`detec.py` supports the following options:
+
+```python
+usage: detect3.py [-h] [--weights WEIGHTS [WEIGHTS ...]] [--source SOURCE]
+                  [--img-size IMG_SIZE] [--conf-thres CONF_THRES]
+                  [--iou-thres IOU_THRES] [--device DEVICE] [--view-img]
+                  [--classes CLASSES [CLASSES ...]] [--agnostic-nms]
+                  [--augment] [--update] [--no-trace] [--save-path SAVE_PATH]
+                  [--mode MODE]
+```
 
 ### References
 
