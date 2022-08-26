@@ -10,7 +10,7 @@ This is Korea University Team 13 of Data Campus hosted by Korea Data Agency.
 <a href="https://colab.research.google.com/drive/1Zx0zZMmj5Zyuf6RDV4EzPnjmeupha7fS?hl=ko#scrollTo=E4f3RiVJvFew">
   <img src="https://img.shields.io/badge/colabDemo-yellowgreen?
             style=flatsquare&
-            logo=googlecolab&
+            logo=colab&
             logoColor=white&
             link=https://colab.research.google.com
             /drive/1Zx0zZMmj5Zyuf6RDV4EzPnjmeupha7fS?hl=ko#scrollTo=E4f3RiVJvFew"/></a> 
