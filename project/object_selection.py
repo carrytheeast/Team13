@@ -1,5 +1,6 @@
 # object_selection.py 
 
+import cv2
 import numpy as np
 from collections import Counter
 from PIL import ImageFont, ImageDraw, Image

@@ -1,7 +1,7 @@
 # detec.py
 
 import argparse
-from pathlib import Path
+# from pathlib import Path
 
 import cv2
 import torch
@@ -180,7 +180,6 @@ def detect():
                     print('statement: dir: {}, ear: {}, obj: {}'.format(dir_total, ear, object_select_model.top_iou_obj))
                         
             else: # facemesh 안될 때
-
                 im0s = object_select_model.noFaceMesh(im0s, x, y)
 
                 object_select_model.total_fps_cnt += 1/fps
@@ -189,10 +188,10 @@ def detect():
                 total_fps_cnt_list.append(object_select_model.total_fps_cnt) 
 
                 out.write(im0s)
+
     print('save as', save_path)
     out.release()
     return fps_cnt_list, total_fps_cnt_list, fps_obj_list
-
 
 def parse_args():
     parser = argparse.ArgumentParser()
