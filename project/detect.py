@@ -181,7 +181,8 @@ def detect():
                 total_fps_cnt_list.append(object_select_model.total_fps_cnt) 
 
                 out.write(im0s)
-
+    source, weights, imgsz, trace, save_path, mode = args.source, args.weights, args.img_size, not args.no_trace, args.save_path, args.mode
+    webcam = source.isnumeric() or source.endswith('.txt') or source.lower().startswith(('rtsp://', 'rtmp://', 'http://', 'https://'))
     print('save as', save_path)
     out.release()
     return fps_cnt_list, total_fps_cnt_list, fps_obj_list
@@ -196,19 +197,11 @@ def parse_args():
     parser.add_argument('--conf-thres', type=float, default=0.25, help='object confidence threshold')
     parser.add_argument('--iou-thres', type=float, default=0.45, help='IOU threshold for NMS')
     parser.add_argument('--device', default='', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
-    parser.add_argument('--view-img', action='store_true', help='display results')
-    parser.add_argument('--save-txt', action='store_true', help='save results to *.txt')
-    parser.add_argument('--save-conf', action='store_true', help='save confidences in --save-txt labels')
-    parser.add_argument('--nosave', action='store_true', help='do not save images/videos')
     parser.add_argument('--classes', nargs='+', type=int, help='filter by class: --class 0, or --class 0 2 3')
     parser.add_argument('--agnostic-nms', action='store_true', help='class-agnostic NMS')
     parser.add_argument('--augment', action='store_true', help='augmented inference')
     parser.add_argument('--update', action='store_true', help='update all models')
-    parser.add_argument('--project', default='runs/detect', help='save results to project/name')
-    parser.add_argument('--name', default='exp', help='save results to project/name')
-    parser.add_argument('--exist-ok', action='store_true', help='existing project/name ok, do not increment')
     parser.add_argument('--no-trace', action='store_true', help='don`t trace model')           
-
     parser.add_argument('--save-path', type=str, default='run.mp4', help='file/dir/URL/glob')
     parser.add_argument('--mode', type=int, default=0, help='play mode') # 0 for user, 1 for developer
     
