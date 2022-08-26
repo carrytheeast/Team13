@@ -6,7 +6,33 @@
 고려대학교 소속 13조입니다.
 
 This is Korea University Team 13 of Data Campus hosted by Korea Data Agency.
+## ****Directory Structure****
 
+```python
+.
+├── cls_datasets        # image data for train and validation
+│   ├── airpods         # airpods data
+│   ├── book            # book data
+│   ├── cellphone       # cell phone data
+│   ├── desklamp        # desk lamp data
+│   ├── keyboard        # keyboard data
+│   ├── laptop          # laptop data
+│   ├── mouse           # mouse data
+│   ├── pen             # pen data
+│   ├── pencilcase      # pencilcase data
+│   ├── stopwatch       # stopwatch data
+│   ├── tablet computer # tablet computer data
+│   └── wallet          # wallet data
+├── data_preprocessing  # codes for data preprocessing
+├── project             # our main project
+│   ├── data            # .ymal data
+│   ├── models          # yolo model
+│   └──  utils          # other codes
+└──  youtube_dataset    # image data from youtube (vd1~vd10)
+    ├── vd6             # images and annotations
+    ├── vd7             # images and annotations
+    └── vd9             # images and annotations
+```
 ## Demo in colab
 
 <a href="https://colab.research.google.com/drive/1Zx0zZMmj5Zyuf6RDV4EzPnjmeupha7fS?hl=ko#scrollTo=NfANEW0mu8oN"><img src="https://img.shields.io/badge/Demo-blue?style=flat-square&logo=googlecolab&#logoColor=white&link=https://colab.research.google.com/drive/1Zx0zZMmj5Zyuf6RDV4EzPnjmeupha7fS?hl=ko#scrollTo=NfANEW0mu8oN"/></a> 
