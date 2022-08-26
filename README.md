@@ -7,6 +7,8 @@ This is Korea University Team 13 of Data Campus hosted by Korea Data Agency.
 
 ## Demo in colab
 
+https://colab.research.google.com/drive/1Zx0zZMmj5Zyuf6RDV4EzPnjmeupha7fS?hl=ko#scrollTo=E4f3RiVJvFew
+
 ```python
 # You can clone github
 !git clone https://github.com/carrytheeast/Team13
