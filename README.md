@@ -58,6 +58,8 @@ On video:
 
 ```python
 # detect.py
+# --mode 0 for user (default)
+# --mode 1 for developer
 !python detect.py --weights best.pt --source [your_video.mp4] --save_path [your/path/name.mp4] --mode 0
 ```
 
