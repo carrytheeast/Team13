@@ -3,15 +3,15 @@
 고려대학교 소속 13조입니다.
 ### detec.py
 
-`[detec.py](http://detec.py)` supports the following options:
+`detec.py` supports the following options:
 
 ```python
-usage: detect.py [-h] [--weights WEIGHTS [WEIGHTS ...]] [--source SOURCE]
-                 [--img-size IMG_SIZE] [--conf-thres CONF_THRES]
-                 [--iou-thres IOU_THRES] [--device DEVICE] [--view-img]
-                 [--classes CLASSES [CLASSES ...]] [--agnostic-nms]
-                 [--augment] [--update] [--no-trace] [--save-path SAVE_PATH]
-                 [--mode MODE]
+usage: detect3.py [-h] [--weights WEIGHTS [WEIGHTS ...]] [--source SOURCE]
+                  [--img-size IMG_SIZE] [--conf-thres CONF_THRES]
+                  [--iou-thres IOU_THRES] [--device DEVICE] [--view-img]
+                  [--classes CLASSES [CLASSES ...]] [--agnostic-nms]
+                  [--augment] [--update] [--no-trace] [--save-path SAVE_PATH]
+                  [--mode MODE]
 ```
 
 ### Result Visualtization
