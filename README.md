@@ -68,7 +68,7 @@ User can check the belows.
 ![정상 작동중](https://user-images.githubusercontent.com/98952505/186854500-1ae1a163-fc6e-422e-86dc-ae9670082b6e.png)
 
 
-When ear is CLOSE, We show it like the sentence at middle. (1)
+When EAR is CLOSE, We show it like the sentence at middle. (1)
 
 ![졸고있음_유저](https://user-images.githubusercontent.com/98952505/186854533-800e0d9e-efaf-46bd-aee6-f4ddae8aaf65.png)
 
@@ -94,7 +94,7 @@ On Working:
 ![labtop응시 개발자모드](https://user-images.githubusercontent.com/98952505/186854582-4d2eb123-1bb4-4efc-97c3-ae5d93763621.png)
 
 
-When ear is CLOSE, We show it like the sentence at middle. (2)
+When EAR is CLOSE, We show it like the sentence at middle. (2)
 
 ![졸고있음](https://user-images.githubusercontent.com/98952505/186854614-11744ae4-cac0-40b6-8928-69e56623c841.png)
 
