@@ -90,7 +90,7 @@ def detect():
                 h = round(vid_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
                 fps = vid_cap.get(cv2.CAP_PROP_FPS)
             else:
-                fps, w, h = 1, im0s.shape[1], im0s.shape[0]    # webcam frame
+                fps, w, h = 30, im0s.shape[1], im0s.shape[0]    # webcam frame
             out = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
 
         with gaze_model.mp_face_mesh.FaceMesh( max_num_faces=1, refine_landmarks=True,
