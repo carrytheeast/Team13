@@ -1,6 +1,6 @@
-![m_logo.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/78fa981b-ff44-4ba2-a654-575894aa0588/m_logo.png)
+![m_logo](https://user-images.githubusercontent.com/77409431/186919386-8161a62b-0816-40fb-8a07-adc7688f55de.png)
+![logo2](https://user-images.githubusercontent.com/77409431/186919405-930152c2-e72a-44ea-9209-c231b5e42ba9.png)
 
-![logo2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/614ec7de-4b81-4e81-b6f4-1c9f1060f574/logo2.png)
 # A.Eye
 한국 데이터 산업진흥원에서 주최한 데이터 청년 캠퍼스
 
