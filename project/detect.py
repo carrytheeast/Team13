@@ -1,3 +1,5 @@
+# detec.py
+
 import argparse
 from pathlib import Path
 
@@ -8,16 +10,16 @@ import numpy as np
 
 from models.experimental import attempt_load
 from utils.datasets import LoadStreams, LoadImages
-from utils.general import check_img_size, scale_coords, set_logging, non_max_suppression, strip_optimizer
+from utils.general import check_img_size, scale_coords, set_logging, non_max_suppression, strip_optimizer, check_imshow
 from utils.torch_utils import select_device, TracedModel
 
 from gaze_estimation import GazeEstimation
 from object_selection import ObjectSelection
-from utils2 import *
-from plot import *
+from utils2 import gridLine, gazePointLine, gazeText, warningText
+from plot import printPlot
 
 def detect():    
-    source, weights, imgsz, trace, save_path, mode = args.source, args.weights, args.img_size, not args.no_trace, args.save_path, args.mode
+    source, weights, view_img, imgsz, trace, save_path, mode = args.source, args.weights, args.view_img, args.img_size, not args.no_trace, args.save_path, args.mode
     webcam = source.isnumeric() or source.endswith('.txt') or source.lower().startswith(('rtsp://', 'rtmp://', 'http://', 'https://'))
     fps_cnt_list, total_fps_cnt_list, fps_obj_list = [], [], []
     first_cnt = 0
@@ -39,7 +41,9 @@ def detect():
         model.half()  # to FP16
 
     # Set Dataloader
+    vid_path, vid_writer = None, None
     if webcam:
+        view_img = check_imshow()
         cudnn.benchmark = True  # set True to speed up constant image size inference
         dataset = LoadStreams(source, img_size=imgsz, stride=stride)
     else:
@@ -140,6 +144,10 @@ def detect():
                 for i, det in enumerate(pred):  # detections per image
                     
                     if len(det): # 감지되는 물건이 있을 때                                
+                        if webcam:  # batch_size >= 1
+                            p, s, im0s, frame = path[i], '%g: ' % i, im0s, dataset.count
+                        else:
+                            p, s, im0s, frame = path, '',im0s, getattr(dataset, 'frame', 0)
 
                         # Rescale boxes from img_size to im0 size
                         det[:, :4] = scale_coords(img.shape[2:], det[:, :4], im0s.shape).round()
@@ -181,8 +189,6 @@ def detect():
                 total_fps_cnt_list.append(object_select_model.total_fps_cnt) 
 
                 out.write(im0s)
-    source, weights, imgsz, trace, save_path, mode = args.source, args.weights, args.img_size, not args.no_trace, args.save_path, args.mode
-    webcam = source.isnumeric() or source.endswith('.txt') or source.lower().startswith(('rtsp://', 'rtmp://', 'http://', 'https://'))
     print('save as', save_path)
     out.release()
     return fps_cnt_list, total_fps_cnt_list, fps_obj_list
@@ -197,6 +203,7 @@ def parse_args():
     parser.add_argument('--conf-thres', type=float, default=0.25, help='object confidence threshold')
     parser.add_argument('--iou-thres', type=float, default=0.45, help='IOU threshold for NMS')
     parser.add_argument('--device', default='', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
+    parser.add_argument('--view-img', action='store_true', help='display results')
     parser.add_argument('--classes', nargs='+', type=int, help='filter by class: --class 0, or --class 0 2 3')
     parser.add_argument('--agnostic-nms', action='store_true', help='class-agnostic NMS')
     parser.add_argument('--augment', action='store_true', help='augmented inference')

@@ -3,7 +3,8 @@
 
 import mediapipe as mp
 import pandas as pd
-from utils2 import * 
+from utils2 import FACEMESH_CONTOURS, FACEMESH_IRISES, FACEMESH_EYES, FACEMESH_LEFT_IRIS, FACEMESH_LEFT_EYE
+from utils2 import makeDataFrame, resizeToOrigin, distance, earCal
 
 # landmark 정의는 util에 있습니다.
 

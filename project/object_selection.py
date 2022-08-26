@@ -1,9 +1,11 @@
+# object_selection.py 
+
 import numpy as np
 from collections import Counter
 from PIL import ImageFont, ImageDraw, Image
 
 from utils.plots import plot_one_box
-from utils2 import *
+from utils2 import IoU
 
 class ObjectSelection:
     def __init__(self, args):
