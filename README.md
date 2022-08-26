@@ -119,7 +119,7 @@ After detect, Save video.mp4 and fig.jpg
 
 ![fig1 (4)](https://user-images.githubusercontent.com/98952505/186854344-e695787e-595f-4ecf-b2a5-726a5fc62e18.png)
 
-## detec.py
+## detec.py options
 
 `detec.py` supports the following options:
 
