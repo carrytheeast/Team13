@@ -16,7 +16,7 @@
 %cd Team13/project
 
 # Download weights. If not working, You can try click to download release on this web. 
-!wget https://github.com/carrytheeast/Team13/release/download/v0.1/best.pt
+!wget https://github.com/carrytheeast/Team13/releases/download/v0.1/best.pt
 
 # pip install required packages
 !pip install -r requirements.txt
@@ -36,7 +36,7 @@ No Detect Face and Eyes:
 
 Draw guide line
 
-![사람이 없을 때.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d78b6c99-583f-472e-af61-e59529a30a17/%EC%82%AC%EB%9E%8C%EC%9D%B4_%EC%97%86%EC%9D%84_%EB%95%8C.png)
+![사람이 없을 때](https://user-images.githubusercontent.com/98952505/186838991-7306c5d3-a0c5-411d-9452-d7c75aa170ca.png)
 
 ### UserMode
 
@@ -44,7 +44,7 @@ On Working:
 
 User can check pure study time and total time 
 
-![정상 작동중.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/41bd9dea-4b29-4931-acbb-be38e4bd7230/%EC%A0%95%EC%83%81_%EC%9E%91%EB%8F%99%EC%A4%91.png)
+![정상 작동중](https://user-images.githubusercontent.com/98952505/186839008-dc2d36a4-d81b-4aa5-9413-ed2be6b07991.png)
 
 ### Developer Mode
 
@@ -52,21 +52,9 @@ On Working:
 
 Developer can check Gaze Directions, Gaze Line, Objects, Time, Object Bbox
 
-![book응시 개발자모드.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f38b59f3-0cf4-4e81-aa52-54c40ce9be01/book%EC%9D%91%EC%8B%9C_%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%AA%A8%EB%93%9C.png)
+![book응시 개발자모드](https://user-images.githubusercontent.com/98952505/186839030-a144ce05-00e5-47bf-af6c-e1302c4c8c0c.png)
 
-![labtop응시 개발자모드.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dfb0c957-ca03-474b-bf83-f23c32fc30ad/labtop%EC%9D%91%EC%8B%9C_%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%AA%A8%EB%93%9C.png)
-
-
-
-
-
-
-
-
-
-
-
-
+![labtop응시 개발자모드](https://user-images.githubusercontent.com/98952505/186839043-991a97f5-c17a-4bf3-8e06-f8fff0cd756f.png)
 
 ### References
 
