@@ -1,9 +1,11 @@
-import torch
-from  detect import *
+# test.py
+
+from  detect import detect
 from plot import printPlot
+from utils.general import strip_optimizer
+import argparse
 
 import sys
-import PyQt5
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
@@ -20,7 +22,6 @@ import os
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-#         MainWindow.resize(1500,675)   # 첫 화면 크기
         MainWindow.resize(1500,675)   # 첫 화면 크기
         MainWindow.move(0,100) # 첫 화면 위치
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -28,15 +29,14 @@ class Ui_MainWindow(object):
         
         # 카메라 화면표시
         self.cam_frame = QtWidgets.QFrame(self.centralwidget)
-        self.cam_frame.setGeometry(QtCore.QRect(15, 15, 1200, 675)) #전체 프레임 안에서 (x , y , w, h)
+        self.cam_frame.setGeometry(QtCore.QRect(15, 15, 1200, 675)) # 전체 프레임 안에서 (x , y , w, h)
         self.cam_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.cam_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.cam_frame.setObjectName("cam_frame")
 
         self.label_img_show = QtWidgets.QLabel(self.cam_frame)
-        self.label_img_show.setGeometry(QtCore.QRect(10, 10, 1190, 670)) #화면표시 프레임 안에서 (x , y , w, h)
+        self.label_img_show.setGeometry(QtCore.QRect(10, 10, 1190, 670)) # 화면표시 프레임 안에서 (x , y , w, h)
         self.label_img_show.setObjectName("label_img_show")
-
         
         # 버튼 표시 프레임
         self.btn_frame = QtWidgets.QFrame(self.centralwidget)
@@ -47,7 +47,7 @@ class Ui_MainWindow(object):
 
         # 버튼 레이아웃(세로)
         self.widget = QtWidgets.QWidget(self.btn_frame)
-        self.widget.setGeometry(QtCore.QRect(0,0, 250, 700))#버튼 표시 프레임 안에서 (x , y , w, h)
+        self.widget.setGeometry(QtCore.QRect(0,0, 250, 700)) # 버튼 표시 프레임 안에서 (x , y , w, h)
         self.widget.setObjectName("widget")
         self.horizontalLayout = QtWidgets.QVBoxLayout(self.widget)
         self.horizontalLayout.setContentsMargins(0, 10, 10, 0)
@@ -79,8 +79,8 @@ class Ui_MainWindow(object):
         
         self.retranslateUi(MainWindow)
         self.btn_opencam.clicked.connect(self.opencam) # open video source
-        self.btn_detect.clicked.connect(MainWindow.close)# 모델이 구현되면 기능 사용
-        self.btn_exit.clicked.connect(MainWindow.close)# ui 종료
+        self.btn_detect.clicked.connect(MainWindow.close) # 모델이 구현되면 기능 사용
+        self.btn_exit.clicked.connect(MainWindow.close) # ui 종료
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         
     def retranslateUi(self, MainWindow):
@@ -92,15 +92,15 @@ class Ui_MainWindow(object):
         self.btn_exit.setText(_translate("MainWindow", "나가기"))
         
     def opencam(self):
-        vedio_file = 'run.mp4'
-#         vedio_file = 'final_video.mp4'
+        vedio_file = 'run.mp4' # our saved video
         self.camcapture = cv2.VideoCapture(vedio_file)
         self.timer = QtCore.QTimer()
         self.timer.start()
-        self.timer.setInterval(40)  # 1s주기
+        self.timer.setInterval(40) # 1s 주기
         self.timer.timeout.connect(self.camshow)
 
     def camshow(self):
+        # global self.camimg
         self.ret, self.camimg = self.camcapture.read()
         if self.ret:
             camimg = cv2.cvtColor(self.camimg, cv2.COLOR_BGR2RGB)
@@ -108,13 +108,6 @@ class Ui_MainWindow(object):
             self.pixmap = QtGui.QPixmap(showImage)
             self.p = self.pixmap.scaled(1190, 670, QtCore.Qt.IgnoreAspectRatio)
             self.label_img_show.setPixmap(self.p)
-#         # global self.camimg
-#         _, self.camimg = self.camcapture.read()
-#         camimg = cv2.cvtColor(self.camimg, cv2.COLOR_BGR2RGB)
-#         showImage = QtGui.QImage(camimg.data, camimg.shape[1], camimg.shape[0], QtGui.QImage.Format_RGB888)
-#         self.pixmap = QtGui.QPixmap(showImage)
-#         self.p = self.pixmap.scaled(1190, 670, QtCore.Qt.IgnoreAspectRatio)
-#         self.label_img_show.setPixmap(self.p)
     
 class Another_Window(object):
     def setupUi(self,Dialog):
@@ -127,7 +120,7 @@ class Another_Window(object):
         self.frame_6.setFrameShape(QFrame.Panel | QFrame.Sunken)
         self.graph_frame = QtWidgets.QFrame()
         
-        self.pixmap = QPixmap('fig1.png')
+        self.pixmap = QPixmap('fig1.png') # our saved image
         self.re_pixmap = self.pixmap.scaled(1200,675)
                 
         self.label_graph_show = QtWidgets.QLabel(self.graph_frame)
@@ -136,8 +129,7 @@ class Another_Window(object):
         self.layout_6 = QGridLayout()
 
         study_time = []
-        cnt = 0
-        f = open("study_time.txt","r")
+        f = open("study_time.txt","r") # our saved text (times)
         while True:
             line = f.readline()
             if line == '' :
@@ -148,7 +140,6 @@ class Another_Window(object):
         self.label1 = QLabel(study_time[0])
         self.label2 = QLabel(study_time[1])
         self.label3 = QLabel(study_time[2])
-
 
         self.label4 = QLabel('')
         self.label5 = QLabel('')
@@ -224,6 +215,7 @@ if __name__ == "__main__":
         else:
             fps_cnt_list, total_fps_cnt_list, fps_obj_list = detect(args) 
             printPlot(fps_cnt_list, total_fps_cnt_list, fps_obj_list)
+    
     app = QApplication(sys.argv)
     window=parentWindow()
     child=childWindow()
