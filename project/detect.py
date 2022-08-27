@@ -33,7 +33,7 @@ def detect(args):
     set_logging()
     device = select_device(args.device)
     half = device.type != 'cpu'  # half precision only supported on CUDA
-#     half = False # If you couldn't see the bbox in yolov7, Set the over line  annotation and Work this line 
+#     half = False # If you couldn't see the bbox in yolov7, Set the over line to annotation and Work this line 
     
     # Load model
     model = attempt_load(weights, map_location=device)# load FP32 model
