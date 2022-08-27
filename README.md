@@ -52,12 +52,6 @@ This is Korea University Team 13 of Data Campus hosted by Korea Data Agency.
 !pip install -r requirements.txt
 ```
 
-## Use Viewer in Local(Quickly Visualization)
-
-```python
-!python viewer.py --weight best.pt --source yourvideo.mp4 --mode 0 
-```
-
 ## Inference
 
 On video:
@@ -68,6 +62,13 @@ On video:
 # --mode 1 for developer
 !python detect.py --weights best.pt --source [your_video.mp4] --save-path [your/path/name.mp4] --mode 0
 ```
+
+## Use Viewer in Local(Quickly Visualization)
+
+```python
+!python viewer.py --weight best.pt --source yourvideo.mp4 --mode 0 
+```
+
 
 ## Woking
 
