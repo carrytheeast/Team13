@@ -31,3 +31,12 @@ def printPlot(fps_cnt_list, total_fps_cnt_list, fps_obj_list):
 
     plt.savefig('fig1.png', dpi=75)
     print('save as', 'fig1.png')
+    
+    f = open('study_time.txt','w')
+    FPS = '{}:{}'.format(int(df.iloc[-1]['FPS']//60),round(df.iloc[-1]['FPS'],2))
+    TOTAL = '{}:{}'.format(int(df.iloc[-1]['TOTAL']//60),round(df.iloc[-1]['TOTAL'],2))
+    REST = '{}:{}'.format(int((df.iloc[-1]['TOTAL'] - df.iloc[-1]['FPS'])//60),round(df.iloc[-1]['TOTAL'] - df.iloc[-1]['FPS'],2))
+    m = 'Total Time: {}\nStudy Time: {}\nRest Time: {}'.format(TOTAL,FPS,REST)
+    f.write(m)
+    f.close()
+    print('save study_time.txt')
