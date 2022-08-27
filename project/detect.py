@@ -32,8 +32,9 @@ def detect():
     # Initialize
     set_logging()
     device = select_device(args.device)
-    half = device.type != 'cpu'  # half precision only supported on CUDA
-
+#     half = device.type != 'cpu'  # half precision only supported on CUDA
+    half = False
+    
     # Load model
     model = attempt_load(weights, map_location=device)# load FP32 model
     stride = int(model.stride.max())  # model stride
@@ -199,7 +200,7 @@ def detect():
                     object_select_model.total_fps_cnt += 1/fps
 
                     fps_cnt_list.append(object_select_model.fps_cnt)
-                    if ear =='CLOSE':
+                    if object_select_model.top_iou_obj == 'close':
                         object_select_model.top_iou_obj = 'sleep'
                     fps_obj_list.append(object_select_model.top_iou_obj)
                     total_fps_cnt_list.append(object_select_model.total_fps_cnt) 

@@ -74,9 +74,20 @@ class ObjectSelection:
         if iou_key or iou_val:
             self.top_iou = iou_key[np.argmax(iou_val)] # 1 frame의 가장 높은 값 명사로 저장됨(그리드 기준)
             if cell_phone_xyxy: # 예외 정보(사용물품 화면중앙에서 사용 될 때의 보완점)
-                self.top_iou = 'cellphone'            
+                self.top_iou = 'cellphone'
+            if ear == 'CLOSE':
+                self.top_iou = 'close'
             self.top_iou_for10fps.append(self.top_iou)
+
+        # 10개의 프레임 중에 가장 높은 사물
+        if self.top_iou_for10fps:
+            counter_top_iou = Counter(self.top_iou_for10fps)
+            self.top_iou_obj = list(counter_top_iou.keys())[(np.argmax(list(counter_top_iou.values())))] # 명사로 저장됨
         
+        # 최근 10개의 프레임
+        if len(self.top_iou_for10fps) == 10: 
+            self.top_iou_for10fps = self.top_iou_for10fps[1:]                
+           
         image = Image.fromarray(image) # 한글사용 가능하게 변경(draw.text형식과 같이 움직여야함, cv2line 그릴 때는 array화 시켜야함)
         draw = ImageDraw.Draw(image)
         
@@ -85,29 +96,22 @@ class ObjectSelection:
                 org=(int(x*0.1),int(y*0.1))
                 draw.text(org, "지금 보는 물체:\n"+self.top_iou, 
                     font=ImageFont.truetype("./Nanum_hand_seongsil.ttf", self.font_size), fill=(255,255,255))
-            # writing => top_iou_obj(10fps동안 빈도수 1등)
-            if self.top_iou_obj: 
+            
+            if self.top_iou_obj: # 계속 보는 거(빈도수 1st in 10frame)
                 org=(int(x*0.1),int(y*0.3))
                 draw.text(org, "일정시간동안 보는 물체:\n"+self.top_iou_obj, 
                     font=ImageFont.truetype("./Nanum_hand_seongsil.ttf", self.font_size), fill=(255,255,255))
-
-        # 10개의 프레임 중에 가장 높은 사물
-        if self.top_iou_for10fps:
-            counter_top_iou = Counter(self.top_iou_for10fps)
-            self.top_iou_obj = list(counter_top_iou.keys())[(np.argmax(list(counter_top_iou.values())))] # 명사로 저장됨
-
-        # 최근 10개의 프레임
-        if len(self.top_iou_for10fps) == 10: 
-            self.top_iou_for10fps = self.top_iou_for10fps[1:]                      
         
+        if self.top_iou_obj == 'close':
+            org = (int(x*0.35),int(y*0.45))
+            draw.text(org, "혹시 졸고 계신가요?",
+                      font=ImageFont.truetype("./Nanum_hand_seongsil.ttf", self.font_size),fill=(255,255,255))
+      
+        
+        # 순공시간 더하기
         if self.top_iou_obj in study_obj:
-            self.fps_cnt += 1/fps # 순공시간, 1단위: 1초 
-            if ear == 'CLOSE': # 특이사항: 졸음 시간
-                org = (int(x*0.35),int(y*0.45))
-                draw.text(org, "혹시 졸고 계신가요?", 
-                    font=ImageFont.truetype("./Nanum_hand_seongsil.ttf", self.font_size), fill=(255,255,255))
-                self.fps_cnt -= 1/fps
-
+            if self.top_iou_obj != 'close':
+                self.fps_cnt += 1/fps
         # Time Display --------------------------------------------------------------------------
         self.displayTime(draw, x, y)              
         
@@ -120,7 +124,7 @@ class ObjectSelection:
         draw = ImageDraw.Draw(image)        
         self.displayTime(draw, x, y)       
 
-        org=(int(x*0.45),int(y*0.2))
+        org=(int(x*0.4),int(y*0.4))
         draw.text(org, "오브젝트가 없습니다.", 
             font=ImageFont.truetype("./Nanum_hand_seongsil.ttf", self.font_size), fill=(255,255,255))
         
