@@ -32,8 +32,8 @@ def detect(args):
     # Initialize
     set_logging()
     device = select_device(args.device)
-#     half = device.type != 'cpu'  # half precision only supported on CUDA
-    half = False
+    half = device.type != 'cpu'  # half precision only supported on CUDA
+#     half = False # If you couldn't see the bbox in yolov7, Set the over line  annotation and Work this line 
     
     # Load model
     model = attempt_load(weights, map_location=device)# load FP32 model
@@ -91,7 +91,7 @@ def detect(args):
                 h = round(vid_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
                 fps = vid_cap.get(cv2.CAP_PROP_FPS)
             else:
-                fps, w, h = 24, im0s.shape[1], im0s.shape[0]    # webcam frame
+                fps, w, h = 30, im0s.shape[1], im0s.shape[0]    # webcam frame
             out = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
 
         with gaze_model.mp_face_mesh.FaceMesh( max_num_faces=1, refine_landmarks=True,
