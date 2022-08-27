@@ -52,7 +52,7 @@ This is Korea University Team 13 of Data Campus hosted by Korea Data Agency.
 !pip install -r requirements.txt
 ```
 
-### Use Viewer in Local(Quickly Visualization)
+## Use Viewer in Local(Quickly Visualization)
 
 ```python
 !python viewer.py --weight best.pt --source yourvideo.mp4 --mode 0 
