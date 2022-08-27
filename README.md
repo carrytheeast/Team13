@@ -66,6 +66,9 @@ On video:
 ## Use Viewer in Local(Quickly Visualization)
 
 ```python
+##### Do not working in Colab #####
+# viewer.py
+# No change default save-path
 !python viewer.py --weight best.pt --source yourvideo.mp4 --mode 0 
 ```
 
