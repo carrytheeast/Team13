@@ -18,7 +18,7 @@ from object_selection import ObjectSelection
 from utils2 import gridLine, gazePointLine, gazeText, warningText
 from plot import printPlot
 
-def detect():    
+def detect(args):    
 
     #################################################
     # yolov7 by WongKinYiu with modifications START #
@@ -91,7 +91,7 @@ def detect():
                 h = round(vid_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
                 fps = vid_cap.get(cv2.CAP_PROP_FPS)
             else:
-                fps, w, h = 30, im0s.shape[1], im0s.shape[0]    # webcam frame
+                fps, w, h = 24, im0s.shape[1], im0s.shape[0]    # webcam frame
             out = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
 
         with gaze_model.mp_face_mesh.FaceMesh( max_num_faces=1, refine_landmarks=True,
@@ -256,8 +256,8 @@ if __name__ == "__main__":
     with torch.no_grad():
         if args.update:  # update all models (to fix SourceChangeWarning)
             for args.weights in ['best.pt']:
-                detect()
+                detect(args)
                 strip_optimizer(args.weights)
         else:
-            fps_cnt_list, total_fps_cnt_list, fps_obj_list = detect() 
+            fps_cnt_list, total_fps_cnt_list, fps_obj_list = detect(args) 
             printPlot(fps_cnt_list, total_fps_cnt_list, fps_obj_list)
