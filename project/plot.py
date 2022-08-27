@@ -29,5 +29,5 @@ def printPlot(fps_cnt_list, total_fps_cnt_list, fps_obj_list):
     ax2.set_ylabel('Gaze Frequency(10fps)', fontsize=13)
     ax2.set_xlabel('Object Name', fontsize=13)
 
-    plt.savefig('fig1.png', dpi=50)
+    plt.savefig('fig1.png', dpi=75)
     print('save as', 'fig1.png')
