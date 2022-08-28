@@ -68,8 +68,7 @@ On video:
 ```python
 ##### Do not working in Colab #####
 # viewer.py
-# No change default save-path
-!python viewer.py --weight best.pt --source yourvideo.mp4 --mode 0 
+!python viewer.py --weight best.pt --source [yourvideo.mp4] --save-path [your/path/name.mp4] --mode 0 
 ```
 
 
