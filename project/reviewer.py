@@ -211,5 +211,7 @@ if __name__ == "__main__":
     child=childWindow()
     btn=window.main_ui.btn_detect
     btn.clicked.connect(child.show)
+    btn_back = child.child.btn_back
+    btn_back.clicked.connect(window.show)
     window.show()
     sys.exit(app.exec_())
