@@ -1,4 +1,4 @@
-# test.py
+# reviewer.py
 
 from  detect import detect
 from plot import printPlot
