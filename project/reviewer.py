@@ -29,43 +29,52 @@ class Ui_MainWindow(object):
         
         # 카메라 화면표시
         self.cam_frame = QtWidgets.QFrame(self.centralwidget)
-        self.cam_frame.setGeometry(QtCore.QRect(15, 15, 1200, 675)) # 전체 프레임 안에서 (x , y , w, h)
+        self.cam_frame.setGeometry(QtCore.QRect(15, 15, 1300, 675)) # 전체 프레임 안에서 (x , y , w, h)
         self.cam_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.cam_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.cam_frame.setObjectName("cam_frame")
 
         self.label_img_show = QtWidgets.QLabel(self.cam_frame)
-        self.label_img_show.setGeometry(QtCore.QRect(10, 10, 1190, 670)) # 화면표시 프레임 안에서 (x , y , w, h)
+        self.label_img_show.setGeometry(QtCore.QRect(10, 10, 1290, 670)) # 화면표시 프레임 안에서 (x , y , w, h)
         self.label_img_show.setObjectName("label_img_show")
         
         # 버튼 표시 프레임
         self.btn_frame = QtWidgets.QFrame(self.centralwidget)
-        self.btn_frame.setGeometry(QtCore.QRect(1230,15,250,700)) # 버튼 프레임 안에서 (x , y , w, h)
+        self.btn_frame.setGeometry(QtCore.QRect(1330,15,150,700)) # 버튼 프레임 안에서 (x , y , w, h)
         self.btn_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.btn_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.btn_frame.setObjectName("frame_3")
 
         # 버튼 레이아웃(세로)
         self.widget = QtWidgets.QWidget(self.btn_frame)
-        self.widget.setGeometry(QtCore.QRect(0,0, 250, 700)) # 버튼 표시 프레임 안에서 (x , y , w, h)
+        self.widget.setGeometry(QtCore.QRect(0,0, 150, 700)) # 버튼 표시 프레임 안에서 (x , y , w, h)
         self.widget.setObjectName("widget")
         self.horizontalLayout = QtWidgets.QVBoxLayout(self.widget)
-        self.horizontalLayout.setContentsMargins(0, 10, 10, 0)
-        self.horizontalLayout.setSpacing(10)
+        #self.horizontalLayout.setContentsMargins(0, 10, 10, 0)
+        #self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         
         # video source open
         self.btn_opencam = QtWidgets.QPushButton()
         self.btn_opencam.setObjectName("btn_opencam")
         self.horizontalLayout.addWidget(self.btn_opencam)
+        self.btn_opencam.setIcon(QIcon("play.png"))
 
-        self.btn_detect = QtWidgets.QPushButton(self.widget)
+        self.btn_detect = QtWidgets.QPushButton()
         self.btn_detect.setObjectName("btn_detect")
         self.horizontalLayout.addWidget(self.btn_detect)
+        self.btn_detect.setIcon(QIcon("file.png"))
+        
+        self.empty1_box = QtWidgets.QLabel('')
+        self.empty1_box.setMaximumHeight(270)
+        self.empty1_box.setMaximumWidth(150)
+        self.horizontalLayout.addWidget(self.empty1_box)
+
         # 나가기
-        self.btn_exit = QtWidgets.QPushButton(self.widget)
+        self.btn_exit = QtWidgets.QPushButton()
         self.btn_exit.setObjectName("btn_exit")
         self.horizontalLayout.addWidget(self.btn_exit)
+        self.btn_exit.setIcon(QIcon("power-off.png"))
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -87,12 +96,13 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "- A.eye -"))
         self.label_img_show.setText(_translate("MainWindow", ""))
-        self.btn_opencam.setText(_translate("MainWindow", "학습 시작"))
-        self.btn_detect.setText(_translate("MainWindow", "학습 종료"))
-        self.btn_exit.setText(_translate("MainWindow", "나가기"))
+        # self.btn_opencam.setText(_translate("MainWindow", "학습 시작"))
+        # self.btn_detect.setText(_translate("MainWindow", "학습 종료"))
+        # self.btn_exit.setText(_translate("MainWindow", "나가기"))
         
     def opencam(self):
-        vedio_file = 'run.mp4' # our saved video
+        vedio_file = args.save_path
+        # vedio_file = 'run.mp4' # our saved video
         self.camcapture = cv2.VideoCapture(vedio_file)
         self.timer = QtCore.QTimer()
         self.timer.start()
@@ -205,7 +215,7 @@ def parse_args():
     args = parser.parse_args()
     return args
 
-if __name__ == "__main__":
+if __name__ == "__main__":   
     app = QApplication(sys.argv)
     window=parentWindow()
     child=childWindow()
